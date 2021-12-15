@@ -1,0 +1,72 @@
+{% extends "website/base.html" %}
+
+{% load static %}
+{% block projects %}
+<main>
+    <br>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="{% static 'images/squad.jpg' %}">
+                        </div>
+                        <br>
+                        <h5 class="card-title">Fine-tune RoBERTa for Question-Answering with HyperColoum</h5>
+                        <a class="stretched-link" href="{% url 'squad' %}"></a>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="{% static 'images/hubmap.jpg' %}">
+                        </div>
+                        <br>
+                        <h5 class="card-title">The Detection of Functional Tissue Units in Human Kidney</h5>
+                        <a class="stretched-link" href="{% url 'hubmap' %}"></a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="{% static 'images/bitcoin.jpg' %}">
+                        </div>
+                        <br>
+                        <h5 class="card-title">The Prediction of Bitcoin Price in Short Future</h5>
+                        <a class="stretched-link" href="{% url 'bitcoin' %}"></a>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="{% static 'images/music_generation.jpg' %}">
+                        </div>
+                        <br>
+                        <h5 class="card-title">Generate Piano Music Scores using Neural Networks</h5>
+                        <a class="stretched-link" href="{% url 'music_generation' %}"></a>
+                    </div>
+                </div>
+            </div>
+            <!--<br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <div class="embed-responsive embed-responsive-16by9"></div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </main>
+{% endblock projects %}

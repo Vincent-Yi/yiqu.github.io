@@ -1,0 +1,21 @@
+{% extends "website/base.html" %}
+
+{% load static %}
+{% block music_generation %}
+<main>
+    <br>
+    <div class="container col-md-9">
+        <h1>Generate Piano Music Scores using Neural Networks</h1>
+        <br>
+        <p>Machine language generation methods have revolutionized since the ideology of Neural Networks fledged. Machine-generated sentences nowadays are grammatically correct, but they lack coherence. Traditional language models tend to capture features at the word level, which were able to identify the relationship between words in sequential order. However, for groups of words or sentences that split apart in long-distance, LSTM or GRU models fail to extract semantical features effectively. The BERT model helps address this problem by implementing sentence embedding, but recent studies showed that without this feature, the accuracy of the BERT model does not hurt much. Word level distribution, theoretically, represents the author's personality, since the readers can easily tell the genres of different writers given their sentences. Similar technology can be applied in the music generation field if we represent the combination of musical notes the same way as we vectorize English words.</p>
+        <p>We can view the keyboard as a sequence of zeros. If any key is pressed, the corresponding digit turns into one. The following image shows how to represent the keyboard using this binary sequence.
+           <img src="{% static 'images/key_to_binary.jpg' %}"class="col-md-9"></img>
+        </p>
+        <p>The time of repetitions is determined by the sample rate. We then fill those binary sequences into neural network models the same way as we did with text data. To generate the music scores for one minute, I set the history size to be 480 with sample frequency being 8.</p>
+        <p>For the language model, I used LSTM, Transformer with only encoders, and Transformer with both encoders and decoders. The following image shows the generated results from the Transformer encoder-decoder model.
+            <img src="{% static 'images/generated.jpg' %}" class="col-md-9"></img>
+        </p>
+        <p>The problem seems to be that language models fail to identify the repetition problem. In natural language, words repetitions are rare and discouraged in any form. However, in music, we cannot avoid repetitions due to the existence of the sampling method. How to teach our model to understand the difference between repetitions caused by sampling and repetitions intentionally created becomes a critical issue.</p>
+    </div>
+</main>
+{% endblock music_generation %}

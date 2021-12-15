@@ -1,0 +1,16 @@
+{% extends "website/base.html" %}
+
+{% load static %}
+{% block hubmap %}
+<main>
+    <br>
+    <div class="container col-md-9">
+        <h1>The Detection of Functional Tissue Units in Human Kidney</h1>
+        <br>
+        <p>I am always wondering how AI can be applied in the health industry. This idea became extremely strong, especially in the covid pandemic period. This project caught my eyes when I was browsing Kaggle's website. We are given a bunch of images from the paraffin sections of human kidney cells with high resolution. Biological experts mark the boundary of some sections which are called Functional Tissue Units (FTU). Previous research showed evidence that this problem can be tackled by using neural networks.</p>
+        <img src="{% static 'images/hubmap_kidney_labels.jpg' %}" class="col-md-9"></img>
+        <p>The training data contains three parts, one is the original image of various sizes and resolutions. The second is a JSON file that has the coordinates of expert-marked FTUs. The third file is also an expert-marked region called anatomical structure where FTUs don't exist even if similar structures are detected. I tried to use UNet as the backbone of the neural network model. The vanilla UNet showed limited ability when fed in large images with different dimensionalities. I started with adding shortcuts between layers using ResNet. The training loss indeed decreases but the predicted classification layer is centralized. After a long time searching for articles, I realized that hypercolumn may help. However, when I add the hypercolumns in both encoder and decoder parts, the prediction clearly draws the boundary of the entire paraffin section but fails to draw FTUs. I increase the size of FTUs by adding more pixels around the center in order to make the signal strong. However, it doesn't solve the problem. As the model becomes more and more complicated, the 30GB RAM in Google Colab becomes insufficient. I have to chop down features and resize the image. The final model consists of UNet with SEResNet in encoders, hypercolumns, and deepsupervision in decoders. The following image shows the original image, expert-marked labels, and results from this model. The average IoU is 10.31%.</p>
+        <img src="{% static 'images/hubmap_results.jpg' %}" class="col-md-9"></img>
+    </div>
+</main>
+{% endblock hubmap %}
